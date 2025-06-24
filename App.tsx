@@ -13,7 +13,7 @@ export default function App(): React.JSX.Element {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>v15</Text>
+      <Text style={styles.text}>v17</Text>
       <StatusBar style="auto" />
     </View>
   );
