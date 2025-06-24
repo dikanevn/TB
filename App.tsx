@@ -1,8 +1,8 @@
+import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Platform } from 'react-native';
-import { useEffect } from 'react';
 
-export default function App() {
+export default function App(): React.JSX.Element {
   useEffect(() => {
     // Инициализация Telegram Web App только для веб-платформы
     if (Platform.OS === 'web' && window.Telegram?.WebApp) {
@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>v11</Text>
+      <Text style={styles.text}>v15</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -29,5 +29,5 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     fontWeight: 'bold',
-  }
+  },
 });
