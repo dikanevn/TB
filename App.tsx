@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Platform } from 'react-native';
+import { StyleSheet, Text, View, Platform, TouchableOpacity } from 'react-native';
+import { TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
+
+// Манифест для подключения к TON
+const manifestUrl = 'https://raw.githubusercontent.com/dikanevn/TB/main/public/tonconnect-manifest.json';
 
 export default function App(): React.JSX.Element {
   useEffect(() => {
@@ -12,22 +16,34 @@ export default function App(): React.JSX.Element {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>v21</Text>
-      <StatusBar style="auto" />
-    </View>
+    <TonConnectUIProvider manifestUrl={manifestUrl}>
+      <View style={styles.container}>
+        <Text style={styles.text}>v21</Text>
+        {Platform.OS === 'web' && (
+          <View style={styles.buttonContainer}>
+            <TonConnectButton />
+          </View>
+        )}
+        <StatusBar style="light" />
+      </View>
+    </TonConnectUIProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 20,
   },
+  buttonContainer: {
+    marginTop: 20,
+  }
 });
