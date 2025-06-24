@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build": "expo export --platform web",
-    "predeploy": "npm run build && copy .nojekyll dist\\.nojekyll && node fix-paths.js",
+    "predeploy": "npm run build && cp .nojekyll dist/.nojekyll && node fix-paths.js",
     "deploy": "gh-pages -d dist --dotfiles",
     "type-check": "tsc --noEmit"
   },
